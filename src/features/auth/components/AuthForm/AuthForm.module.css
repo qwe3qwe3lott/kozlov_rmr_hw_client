@@ -1,0 +1,8 @@
+.layout {
+    padding: 1em;
+    border-radius: 0.5em;
+    background-color: var(--section-background-color);
+    display: grid;
+    grid-auto-flow: row;
+    gap: 0.25em;
+}

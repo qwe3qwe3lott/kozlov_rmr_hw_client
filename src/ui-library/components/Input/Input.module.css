@@ -1,0 +1,19 @@
+.label {
+    display: grid;
+    grid-auto-flow: row;
+    gap: 0.25em;
+    text-align: center;
+    height: 4em;
+    grid-template-rows: min-content;
+}
+.input {
+    padding: 0.2em;
+    border: none;
+    border-radius: 0.25em;
+    background-color: var(--primary-text-color);
+    height: min-content;
+}
+.error {
+    font-size: 0.75em;
+    color: var(--error-color);
+}

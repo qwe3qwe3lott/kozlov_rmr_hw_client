@@ -1,0 +1,9 @@
+.layout {
+    padding: 0.2em;
+    border: none;
+    border-radius: 0.25em;
+    background-color: var(--primary-color);
+    color: var(--primary-text-color);
+    text-align: center;
+    cursor: pointer;
+}

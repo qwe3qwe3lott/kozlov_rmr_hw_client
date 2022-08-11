@@ -1,0 +1,5 @@
+.layout {
+    display: grid;
+    padding: 1em;
+    place-items: start center;
+}

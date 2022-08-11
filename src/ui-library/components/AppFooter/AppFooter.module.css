@@ -1,0 +1,7 @@
+.layout {
+    background-color: var(--primary-color);
+    padding: 0.25em 0.5em;
+    color: var(--primary-text-color);
+    display: grid;
+    place-items: center;
+}
