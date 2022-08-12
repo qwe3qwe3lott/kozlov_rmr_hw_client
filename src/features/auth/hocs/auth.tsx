@@ -1,25 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
+import { Navigate } from 'react-router-dom';
+import { useGetProfileQuery } from '../api';
 
-const auth = <R,>(
-	ReactFC: React.FC<{ resource: R }>,
-	resourceLoader: () => Promise<R>,
-	redirectPath: string
+const auth = (
+	ReactFC: React.FC
 ): React.FC => (() => {
-		const navigate = useNavigate();
-		const [resource, setResource] = useState<R>();
-
-		useEffect(() => {
-			resourceLoader()
-				.then(resource => {
-					setResource(resource);
-				})
-				.catch(() => {
-					navigate(redirectPath, { replace: true });
-				});
-		}, []);
-
-		return resource ? <ReactFC resource={resource}/> : null;
-	});
+	const { isSuccess, isError } = useGetProfileQuery();
+	if (isError) return <Navigate to={'/auth'} replace/>;
+	return isSuccess ? <ReactFC/> : null;
+});
 
 export default auth;

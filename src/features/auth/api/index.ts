@@ -5,7 +5,7 @@ import { Profile } from '../types/Profile';
 export const authApi = createApi({
 	reducerPath: 'authApi',
 	baseQuery: fetchBaseQuery({
-		baseUrl: process.env.REACT_APP_BACKEND_URL
+		baseUrl: `${process.env.REACT_APP_BACKEND_URL}/api/v1`
 	}),
 	tagTypes: ['Profile'],
 	endpoints: (builder) => ({
@@ -34,4 +34,4 @@ export const authApi = createApi({
 	})
 });
 
-export const { useSignInMutation, useSignOutMutation, useGetProfileQuery, useLazyGetProfileQuery } = authApi;
+export const { useSignInMutation, useSignOutMutation, useGetProfileQuery } = authApi;

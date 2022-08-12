@@ -11,7 +11,7 @@ export const phoneOptions = {
 	required: 'Enter your phone',
 	pattern: {
 		value: /^\+(7|976)[0-9]{10}$/,
-		message: 'Enter valid phone' //TODO check ALL codes like 985
+		message: 'Enter valid phone'
 	},
 	value: '+79853421167'
 };

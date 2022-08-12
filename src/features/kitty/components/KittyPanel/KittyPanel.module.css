@@ -5,10 +5,12 @@
     display: grid;
     grid-auto-flow: row;
     gap: 0.25em;
-    width: 15em;
 }
-.error {
+.kitty {
+    height: 15em;
+    width: 15em;
+    background-color: #0000000F;
+}
+.text {
     text-align: center;
-    color: var(--error-color);
-    font-size: 0.8em;
 }

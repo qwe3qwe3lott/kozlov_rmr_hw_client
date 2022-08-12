@@ -2,7 +2,7 @@ import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import KittyScreen from '../screens/KittyScreen';
 import AuthScreen from '../screens/AuthScreen';
-import AppLayout from '../ui-library/layouts/AppLayout';
+import AppLayout from './layouts/AppLayout';
 
 const AppRouter: React.FC = () => {
 	return <Routes>

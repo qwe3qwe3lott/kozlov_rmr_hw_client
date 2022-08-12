@@ -4,10 +4,9 @@ import styles from './AuthForm.module.css';
 import { useForm } from 'react-hook-form';
 import SubmitButton from '../../../../ui-library/components/SubmitButton';
 import { SignInFormValues } from '../../types/SignInFormValues';
-import { useGetProfileQuery, useSignInMutation } from '../../api';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useSignInMutation } from '../../api';
+import { useNavigate } from 'react-router-dom';
 import { emailOptions, passwordOptions, phoneOptions } from './inputValidations';
-
 
 const AuthForm: React.FC = () => {
 	const { register, formState: { errors }, handleSubmit } = useForm<SignInFormValues>({
@@ -16,17 +15,15 @@ const AuthForm: React.FC = () => {
 	const [errorMessage, setErrorMessage] = useState('');
 	const [signIn] = useSignInMutation();
 	const navigate = useNavigate();
-	const { error } = useGetProfileQuery();
-	if (!error) return <Navigate to={'/'} replace/>;
-	const submitHandler = async (data: SignInFormValues) => {
+	const submitHandler = (data: SignInFormValues) => {
 		setErrorMessage('');
-		try {
-			await signIn(data).unwrap();
-			navigate('/');
-		} catch (e) {
-			// @ts-ignore
-			setErrorMessage(e.data.message);
-		}
+		signIn(data)
+			.then(() => {
+				navigate('/', { replace: true });
+			})
+			.catch((error) => {
+				setErrorMessage(error.data.message);
+			});
 	};
 	return <form className={styles.layout} onSubmit={handleSubmit(submitHandler)}>
 		<Input label={'Email'} inputMode={'email'}
@@ -36,7 +33,7 @@ const AuthForm: React.FC = () => {
 		<Input label={'Password'} inputMode={'text'}
 			   errorMsg={errors.password?.message} {...register('password', passwordOptions)}/>
 		<SubmitButton text={'Submit'}/>
-		{errorMessage && <p>{errorMessage}</p>}
+		{errorMessage && <p className={styles.error}>{errorMessage}</p>}
 	</form>;
 };
 
