@@ -23,14 +23,14 @@ export const authApi = createApi({
 				method: 'POST',
 				body: formValues
 			}),
-			invalidatesTags: ['Profile']
+			invalidatesTags: (result, error) => error ? [] : ['Profile']
 		}),
 		signOut: builder.mutation<void, void>({
 			query: () => ({
 				url: '/logout',
 				method: 'POST'
 			}),
-			invalidatesTags: ['Profile']
+			invalidatesTags: (result, error) => error ? [] : ['Profile']
 		})
 	})
 });
