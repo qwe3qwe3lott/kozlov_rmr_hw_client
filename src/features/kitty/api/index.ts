@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { KittyDTO } from './KittyDTO';
+import { KittyDTO } from './dto/KittyDTO';
 
 export const kittyApi = createApi({
 	reducerPath: 'kittyApi',

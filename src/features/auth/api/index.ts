@@ -1,12 +1,13 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { BaseQueryFn, createApi, FetchArgs, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { SignInFormValues } from '../types/SignInFormValues';
 import { Profile } from '../types/Profile';
+import { AuthFetchError } from './errors/AuthFetchError';
 
 export const authApi = createApi({
 	reducerPath: 'authApi',
 	baseQuery: fetchBaseQuery({
 		baseUrl: `${process.env.REACT_APP_BACKEND_URL}/api/v1`
-	}),
+	}) as BaseQueryFn<string | FetchArgs, unknown, AuthFetchError, {}>,
 	tagTypes: ['Profile'],
 	endpoints: (builder) => ({
 		getProfile: builder.query<Profile, void>({
@@ -35,3 +36,4 @@ export const authApi = createApi({
 });
 
 export const { useSignInMutation, useSignOutMutation, useGetProfileQuery } = authApi;
+export const useGetProfileQueryState = authApi.endpoints.getProfile.useQueryState;

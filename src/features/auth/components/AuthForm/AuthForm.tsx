@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Input from '../../../../ui-library/components/Input';
 import styles from './AuthForm.module.css';
 import { useForm } from 'react-hook-form';
@@ -6,25 +6,28 @@ import SubmitButton from '../../../../ui-library/components/SubmitButton';
 import { SignInFormValues } from '../../types/SignInFormValues';
 import { useSignInMutation } from '../../api';
 import { useNavigate } from 'react-router-dom';
-import { emailOptions, passwordOptions, phoneOptions } from './inputValidations';
+import { checkAuthFetchError } from '../../api/validators/checkAuthFetchError';
+import { parseAuthFetchError } from '../../api/parsers/parseAuthFetchError';
+import { emailOptions, passwordOptions, phoneOptions } from './inputValidationOptions';
 
 const AuthForm: React.FC = () => {
 	const { register, formState: { errors }, handleSubmit } = useForm<SignInFormValues>({
-		mode: 'onChange'
+		mode: 'onChange', shouldFocusError: true
 	});
-	const [errorMessage, setErrorMessage] = useState('');
-	const [signIn] = useSignInMutation();
+	const [errorMessages, setErrorMessages] = useState<string[]>([]);
+	const [signIn, { isSuccess, error }] = useSignInMutation();
 	const navigate = useNavigate();
 	const submitHandler = (data: SignInFormValues) => {
-		setErrorMessage('');
-		signIn(data)
-			.then(() => {
-				navigate('/', { replace: true });
-			})
-			.catch((error) => {
-				setErrorMessage(error.data.message);
-			});
+		setErrorMessages([]);
+		signIn(data);
 	};
+	useEffect(() => {
+		if (isSuccess) navigate('/', { replace: true });
+	}, [isSuccess]);
+	useEffect(() => {
+		if (!checkAuthFetchError(error)) return;
+		setErrorMessages(parseAuthFetchError(error));
+	}, [error]);
 	return <form className={styles.layout} onSubmit={handleSubmit(submitHandler)}>
 		<Input label={'Email'} inputMode={'email'}
 			   errorMsg={errors.email?.message} {...register('email', emailOptions)}/>
@@ -32,8 +35,10 @@ const AuthForm: React.FC = () => {
 			   errorMsg={errors.phone?.message} {...register('phone', phoneOptions)}/>
 		<Input label={'Password'} inputMode={'text'}
 			   errorMsg={errors.password?.message} {...register('password', passwordOptions)}/>
-		<SubmitButton text={'Submit'}/>
-		{errorMessage && <p className={styles.error}>{errorMessage}</p>}
+		<SubmitButton text={'Submit'} />
+		{errorMessages && errorMessages.map((errorMessage, index) => <p key={index} className={styles.error}>
+			{errorMessage}
+		</p>)}
 	</form>;
 };
 

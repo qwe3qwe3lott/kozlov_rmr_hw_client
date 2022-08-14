@@ -6,12 +6,12 @@ type Props = {
 	layoutClass?: string
 }
 const HeaderAuthBar: React.FC<Props> = ({ layoutClass = '' }) => {
-	const { data, isSuccess } = useGetProfileQuery();
+	const { data, isSuccess, isFetching } = useGetProfileQuery();
 	const [signOut] = useSignOutMutation();
 	const signOutHandler = () => {
 		signOut();
 	};
-	return isSuccess ? <div className={`${layoutClass} ${styles.layout}`}>
+	return !isFetching && isSuccess ? <div className={`${layoutClass} ${styles.layout}`}>
 		<p>{data.name}</p>
 		<Button onClick={signOutHandler} text={'sign out'}/>
 	</div> : null;
