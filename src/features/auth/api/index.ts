@@ -6,6 +6,7 @@ import { AuthFetchError } from './errors/AuthFetchError';
 export const authApi = createApi({
 	reducerPath: 'authApi',
 	baseQuery: fetchBaseQuery({
+		// eslint-disable-next-line no-undef
 		baseUrl: `${process.env.REACT_APP_BACKEND_URL}/api/v1`
 	}) as BaseQueryFn<string | FetchArgs, unknown, AuthFetchError, {}>,
 	tagTypes: ['Profile'],
@@ -36,4 +37,3 @@ export const authApi = createApi({
 });
 
 export const { useSignInMutation, useSignOutMutation, useGetProfileQuery } = authApi;
-export const useGetProfileQueryState = authApi.endpoints.getProfile.useQueryState;
