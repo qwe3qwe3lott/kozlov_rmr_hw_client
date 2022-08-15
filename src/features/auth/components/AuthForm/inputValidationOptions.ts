@@ -19,7 +19,10 @@ export const phoneOptions = {
 export const passwordOptions = {
 	required: 'Enter your password!',
 	minLength: { value: 4, message: 'password contains at less 4 symbols' },
-	maxLength: { value: 100, message: 'password can`t contain more than 100 symbols' },
+	maxLength: {
+		value: 100,
+		message: 'password can`t contain more than 100 symbols'
+	},
 	pattern: {
 		value: /^[a-z0-9]+$/i,
 		message: 'it should contains only letters and digits'

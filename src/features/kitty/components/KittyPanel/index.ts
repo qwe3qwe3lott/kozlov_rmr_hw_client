@@ -1,1 +1,1 @@
-export { default } from './KittyPanel';
+export { KittyPanel } from './KittyPanel';

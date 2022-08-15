@@ -1,12 +1,14 @@
 import React from 'react';
-import auth from '../../features/auth/hocs/auth';
-import styles from './KittyScreen.module.css';
-import KittyPanel from '../../features/kitty/components/KittyPanel';
+import { withAuth } from '../../features/auth/hocs/withAuth';
+import { KittyPanel } from '../../features/kitty/components/KittyPanel';
+import styles from './KittyScreen.module.scss';
 
-const KittyScreen: React.FC = () => {
-	return <section className={styles.layout}>
-		<KittyPanel/>
-	</section>;
-};
+const KittyScreen: React.FC = withAuth(() => {
+	return (
+		<section className={styles.layout}>
+			<KittyPanel />
+		</section>
+	);
+});
 
-export default auth(KittyScreen);
+export default KittyScreen;

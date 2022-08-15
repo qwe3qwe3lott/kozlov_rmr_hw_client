@@ -1,16 +1,19 @@
-import React from 'react';
-import styles from './Input.module.css';
+import React, { forwardRef } from 'react';
+import styles from './Input.module.scss';
 
 type Props = React.InputHTMLAttributes<HTMLInputElement> & {
-	label: string
-	errorMsg?: string
-}
-const Input: React.FC<Props> = React.forwardRef<HTMLInputElement, Props>(({ label, errorMsg, ...props }, ref) => {
-	return <label className={styles.label}>
-		{label}
-		<input {...props} className={styles.input} ref={ref}/>
-		{errorMsg && <span className={styles.error}>{errorMsg}</span>}
-	</label>;
-});
+	label: string;
+	errorMsg?: string;
+};
 
-export default Input;
+export const Input: React.FC<Props> = forwardRef<HTMLInputElement, Props>(
+	({ label, errorMsg, ...props }, ref) => {
+		return (
+			<label className={styles.label}>
+				{label}
+				<input {...props} className={styles.input} ref={ref} />
+				{errorMsg && <span className={styles.error}>{errorMsg}</span>}
+			</label>
+		);
+	}
+);

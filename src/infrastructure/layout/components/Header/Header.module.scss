@@ -1,0 +1,23 @@
+@import "../../../../ui-library/colors";
+@import "../../../../ui-library/mixins";
+
+.layout {
+	@include headerAndFooterLayout;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.logo {
+	height: 1.5em;
+	width: 1.5em;
+	padding: 0.1em;
+	border: 1px solid $primary-text-color;
+	border-radius: 0.25em;
+}
+
+.bar {
+	margin-left: auto;
+}

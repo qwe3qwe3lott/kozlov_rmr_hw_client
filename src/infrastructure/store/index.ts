@@ -8,9 +8,10 @@ export const store = configureStore({
 		[authApi.reducerPath]: authApi.reducer,
 		[kittyApi.reducerPath]: kittyApi.reducer
 	}),
-	middleware: (getDefaultMiddleware) => getDefaultMiddleware()
-		.concat(authApi.middleware)
-		.concat(kittyApi.middleware)
+	middleware: (getDefaultMiddleware) =>
+		getDefaultMiddleware()
+			.concat(authApi.middleware)
+			.concat(kittyApi.middleware)
 });
 
 setupListeners(store.dispatch);
