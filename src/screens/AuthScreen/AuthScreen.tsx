@@ -7,7 +7,9 @@ import styles from './AuthScreen.module.scss';
 const AuthScreen: React.FC = () => {
 	const [, { isFetching, isSuccess }] = useLazyGetProfileQuery();
 
-	if (!isFetching && isSuccess) return <Navigate to={'/'} replace />;
+	if (!isFetching && isSuccess) {
+		return <Navigate to={'/'} replace />;
+	}
 
 	return (
 		<section className={styles.layout}>

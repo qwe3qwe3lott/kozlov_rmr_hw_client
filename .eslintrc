@@ -54,6 +54,7 @@
     "prefer-const": "error",
     "no-console": "warn",
     "react/display-name": "off",
+    "curly": "error",
     "import/order": ["error", {
       "groups": ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"],
       "newlines-between": "never"

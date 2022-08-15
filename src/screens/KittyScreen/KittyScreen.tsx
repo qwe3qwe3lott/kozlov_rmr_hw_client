@@ -1,9 +1,9 @@
 import React from 'react';
-import { auth } from '../../features/auth/hocs/auth';
+import { withAuth } from '../../features/auth/hocs/withAuth';
 import { KittyPanel } from '../../features/kitty/components/KittyPanel';
 import styles from './KittyScreen.module.scss';
 
-const KittyScreen: React.FC = auth(() => {
+const KittyScreen: React.FC = withAuth(() => {
 	return (
 		<section className={styles.layout}>
 			<KittyPanel />

@@ -34,11 +34,15 @@ export const AuthForm: React.FC = () => {
 	};
 
 	useEffect(() => {
-		if (isSuccess) navigate('/', { replace: true });
+		if (isSuccess) {
+			navigate('/', { replace: true });
+		}
 	}, [isSuccess]);
 
 	useEffect(() => {
-		if (!checkAuthFetchError(error)) return;
+		if (!checkAuthFetchError(error)) {
+			return;
+		}
 		setErrorMessages(parseAuthFetchError(error));
 	}, [error]);
 

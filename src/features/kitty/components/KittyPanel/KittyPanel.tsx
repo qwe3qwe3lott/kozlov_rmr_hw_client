@@ -7,8 +7,9 @@ export const KittyPanel: React.FC = () => {
 	const { isSuccess, data } = useGetKittyQuery();
 
 	useEffect(() => {
-		if (isSuccess)
+		if (isSuccess) {
 			setImageSource(`${process.env.REACT_APP_BACKEND_URL}${data.src}`);
+		}
 	}, [isSuccess]);
 
 	return (
