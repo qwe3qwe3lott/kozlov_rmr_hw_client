@@ -1,0 +1,17 @@
+@import "../../../../ui-library/colors";
+
+.layout {
+	padding: 1em;
+	border-radius: 0.5em;
+	background-color: $section-background-color;
+	display: grid;
+	grid-auto-flow: row;
+	gap: 0.25em;
+	width: 15em;
+}
+
+.error {
+	text-align: center;
+	color: $error-color;
+	font-size: 0.8em;
+}

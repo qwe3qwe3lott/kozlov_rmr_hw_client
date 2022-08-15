@@ -1,0 +1,20 @@
+@import "../../../../ui-library/colors";
+
+.layout {
+	padding: 1em;
+	border-radius: 0.5em;
+	background-color: $section-background-color;
+	display: grid;
+	grid-auto-flow: row;
+	gap: 0.25em;
+}
+
+.kitty {
+	height: 15em;
+	width: 15em;
+	background-color: #0000000f;
+}
+
+.text {
+	text-align: center;
+}

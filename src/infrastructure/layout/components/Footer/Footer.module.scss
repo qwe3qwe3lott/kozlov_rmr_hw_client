@@ -1,0 +1,8 @@
+@import "../../../../ui-library/colors";
+@import "../../../../ui-library/mixins";
+
+.layout {
+	@include headerAndFooterLayout;
+	display: grid;
+	place-items: center;
+}

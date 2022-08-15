@@ -1,0 +1,5 @@
+@import "../../ui-library/mixins";
+
+.layout {
+	@include screenLayout;
+}

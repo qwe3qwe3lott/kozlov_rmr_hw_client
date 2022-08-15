@@ -1,0 +1,10 @@
+@import "../../colors";
+
+.layout {
+	padding: 0.2em;
+	border: none;
+	border-radius: 0.25em;
+	background-color: $section-background-color;
+	color: initial;
+	text-align: center;
+}

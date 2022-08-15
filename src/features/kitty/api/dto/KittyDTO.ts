@@ -1,3 +1,3 @@
 export type KittyDTO = {
-    src: string
-}
+	src: string;
+};

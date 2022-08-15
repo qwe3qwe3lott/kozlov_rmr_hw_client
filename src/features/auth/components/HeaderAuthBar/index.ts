@@ -1,1 +1,1 @@
-export { default } from './HeaderAuthBar';
+export { HeaderAuthBar } from './HeaderAuthBar';
