@@ -47,26 +47,33 @@ export const AuthForm: React.FC = () => {
 	}, [error]);
 
 	return (
-		<form className={styles.layout} onSubmit={handleSubmit(submitHandler)}>
+		<form
+			className={styles.layout}
+			onSubmit={handleSubmit(submitHandler)}
+			data-testid={'auth-form'}
+		>
 			<Input
 				label={'Email'}
 				inputMode={'email'}
 				errorMsg={errors.email?.message}
 				{...register('email', emailOptions)}
+				data-testid={'auth-form__email-input'}
 			/>
 			<Input
 				label={'Phone'}
 				inputMode={'tel'}
 				errorMsg={errors.phone?.message}
 				{...register('phone', phoneOptions)}
+				data-testid={'auth-form__phone-input'}
 			/>
 			<Input
 				label={'Password'}
 				inputMode={'text'}
 				errorMsg={errors.password?.message}
 				{...register('password', passwordOptions)}
+				data-testid={'auth-form__password-input'}
 			/>
-			<SubmitButton text={'Submit'} />
+			<SubmitButton text={'Submit'} data-testid={'auth-form__submit-button'} />
 			{errorMessages &&
 				errorMessages.map((errorMessage, index) => (
 					<p key={index} className={styles.error}>

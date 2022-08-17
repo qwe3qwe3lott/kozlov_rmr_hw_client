@@ -2,20 +2,20 @@
   "env": {
     "browser": true,
     "es2021": true,
-    "node": true
+    "node": true,
+    "jest/globals": true
   },
   "parser": "@typescript-eslint/parser",
   "extends": [
     "eslint:recommended",
-    "plugin:react/recommended",
     "plugin:import/recommended",
     "plugin:import/typescript",
     "prettier"
   ],
   "plugins": [
-    "react",
     "@typescript-eslint",
     "import",
+    "jest",
     "prettier"
   ],
   "parserOptions": {
@@ -44,7 +44,8 @@
         "trailingComma": "none",
         "bracketSpacing": true,
         "jsxBracketSameLine": false,
-        "semi": true
+        "semi": true,
+        "endOfLine": "auto"
       }
     ],
     "no-unused-vars": "error",
