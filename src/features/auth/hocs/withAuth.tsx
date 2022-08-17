@@ -7,7 +7,7 @@ export const withAuth =
 	() => {
 		const { isSuccess, isError } = useGetProfileQuery();
 		if (isError) {
-			return <Navigate to={'/withAuth'} replace />;
+			return <Navigate to={'/auth'} replace />;
 		}
 		return isSuccess ? <ReactFC /> : null;
 	};
