@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { Layout } from '../layout/Layout';
+import { Layout } from '../layout';
 const KittyScreen = lazy<React.FC>(() => import('../../screens/KittyScreen'));
 const AuthScreen = lazy<React.FC>(() => import('../../screens/AuthScreen'));
 

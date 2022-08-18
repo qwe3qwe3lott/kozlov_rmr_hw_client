@@ -1,11 +1,12 @@
 import React from 'react';
+import cn from 'classnames';
 import { useGetProfileQuery, useSignOutMutation } from '../../api';
 import { Button } from '../../../../ui-library/components/Button';
+import { StyleColorPresets } from '../../../../ui-library/presets/StyleColorPresets';
+import { WithLayoutClass } from '../../../../ui-library/util/WithLayoutClass';
 import styles from './HeaderAuthBar.module.scss';
 
-type Props = {
-	layoutClass?: string;
-};
+type Props = WithLayoutClass;
 
 export const HeaderAuthBar: React.FC<Props> = ({ layoutClass = '' }) => {
 	const { data, isSuccess, isFetching } = useGetProfileQuery();
@@ -16,9 +17,14 @@ export const HeaderAuthBar: React.FC<Props> = ({ layoutClass = '' }) => {
 	};
 
 	return !isFetching && isSuccess ? (
-		<div className={`${layoutClass} ${styles.layout}`}>
+		<div className={cn(layoutClass, styles.layout)}>
 			<p>{data.name}</p>
-			<Button onClick={signOutHandler} text={'sign out'} />
+			<Button
+				styleColorPreset={StyleColorPresets.Secondary}
+				onClick={signOutHandler}
+			>
+				sign out
+			</Button>
 		</div>
 	) : null;
 };

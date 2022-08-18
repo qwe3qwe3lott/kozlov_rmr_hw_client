@@ -7,7 +7,7 @@ describe('Button', () => {
 	test('render with text', () => {
 		const text = 'some text';
 
-		render(<Button text={text} />);
+		render(<Button>{text}</Button>);
 		const button = screen.getByText(new RegExp(text, 'i'));
 
 		expect(button).toBeInstanceOf(HTMLButtonElement);

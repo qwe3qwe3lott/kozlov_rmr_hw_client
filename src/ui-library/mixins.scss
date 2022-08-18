@@ -11,3 +11,25 @@
   padding: 0.25em 0.5em;
   color: $primary-text-color;
 }
+
+@mixin button {
+  min-height: 1em;
+  min-width: 1em;
+  padding: 0.2em;
+  border: none;
+  border-radius: 0.25em;
+  text-align: center;
+  cursor: pointer;
+}
+
+@mixin primaryButton {
+  @include button;
+  background-color: $primary-color;
+  color: $primary-text-color;
+}
+
+@mixin secondaryButton {
+  @include button;
+  background-color: $section-background-color;
+  color: $default-text-color;
+}
