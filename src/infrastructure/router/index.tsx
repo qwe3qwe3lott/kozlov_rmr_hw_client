@@ -10,7 +10,7 @@ export const Router: React.FC = () => (
 			<Route
 				index
 				element={
-					<Suspense>
+					<Suspense fallback={'loading kitty page...'}>
 						<KittyScreen />
 					</Suspense>
 				}
@@ -18,7 +18,7 @@ export const Router: React.FC = () => (
 			<Route
 				path={'auth'}
 				element={
-					<Suspense>
+					<Suspense fallback={'loading auth page...'}>
 						<AuthScreen />
 					</Suspense>
 				}

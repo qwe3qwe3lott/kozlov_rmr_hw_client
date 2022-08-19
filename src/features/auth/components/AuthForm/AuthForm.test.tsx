@@ -1,5 +1,4 @@
 import '@testing-library/jest-dom';
-import 'whatwg-fetch';
 import { act, fireEvent, render, waitFor } from '@testing-library/react';
 import { screen } from '@testing-library/dom';
 import { Provider } from 'react-redux';
@@ -13,12 +12,13 @@ import {
 	passwordOptions,
 	phoneOptions
 } from './inputValidationOptions';
-
-const authFormTestId = 'auth-form';
-const emailInputTestId = 'auth-form__email-input';
-const phoneInputTestId = 'auth-form__phone-input';
-const passwordInputTestId = 'auth-form__password-input';
-const submitButtonTestId = 'auth-form__submit-button';
+import {
+	authFormTestId,
+	emailInputTestId,
+	passwordInputTestId,
+	phoneInputTestId,
+	submitButtonTestId
+} from './';
 
 const mockedUsedNavigate = jest.fn();
 
@@ -62,6 +62,7 @@ describe('AuthForm', () => {
 		const submitButtonExpectation = expect(submitButton);
 		submitButtonExpectation.toBeInstanceOf(HTMLInputElement);
 	});
+
 	test('required errors appear', async () => {
 		renderForm();
 
@@ -115,7 +116,7 @@ describe('AuthForm', () => {
 				{
 					status: 401,
 					statusText: 'Unauthorized',
-					url: 'http://localhost:3000/api/v1/login',
+					url: `${process.env.REACT_APP_BACKEND_URL}/api/v1/login`,
 					headers: {
 						'content-type': 'application/json; charset=utf-8'
 					}
@@ -149,7 +150,7 @@ describe('AuthForm', () => {
 		fetchMock.mockResponseOnce('', {
 			status: 200,
 			statusText: 'OK',
-			url: 'http://localhost:3000/api/v1/login',
+			url: `${process.env.REACT_APP_BACKEND_URL}/api/v1/login`,
 			headers: {
 				'content-type': 'application/json; charset=utf-8'
 			}

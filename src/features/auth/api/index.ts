@@ -40,9 +40,7 @@ export const authApi = createApi({
 	})
 });
 
-export const {
-	useSignInMutation,
-	useSignOutMutation,
-	useGetProfileQuery,
-	useLazyGetProfileQuery
-} = authApi;
+export const { useSignInMutation, useSignOutMutation, useGetProfileQuery } =
+	authApi;
+export const useGetProfileQueryState =
+	authApi.endpoints.getProfile.useQueryState;
