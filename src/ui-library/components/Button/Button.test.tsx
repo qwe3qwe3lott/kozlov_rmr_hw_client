@@ -4,13 +4,12 @@ import { render } from '@testing-library/react';
 import { Button } from './Button';
 
 describe('Button', () => {
-	test('render with text', () => {
+	test('render with text', async () => {
 		const text = 'some text';
 
 		render(<Button>{text}</Button>);
-		const button = screen.getByText(new RegExp(text, 'i'));
+		const button = await screen.findByText(new RegExp(text, 'i'));
 
 		expect(button).toBeInstanceOf(HTMLButtonElement);
-		expect(button).toBeInTheDocument();
 	});
 });

@@ -4,13 +4,12 @@ import { render } from '@testing-library/react';
 import { SubmitButton } from './SubmitButton';
 
 describe('SubmitButton', () => {
-	test('render with text', () => {
+	test('render with text', async () => {
 		const text = 'some text';
 
 		render(<SubmitButton text={text} />);
-		const button = screen.getByText(new RegExp(text, 'i'));
+		const input = await screen.findByText(new RegExp(text, 'i'));
 
-		expect(button).toBeInstanceOf(HTMLInputElement);
-		expect(button).toBeInTheDocument();
+		expect(input).toBeInstanceOf(HTMLInputElement);
 	});
 });

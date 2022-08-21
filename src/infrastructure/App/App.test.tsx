@@ -7,6 +7,7 @@ import { render } from '@testing-library/react';
 import { store } from '../store';
 import { authScreenTestId } from '../../screens/AuthScreen';
 import { kittyScreenTestId } from '../../screens/KittyScreen';
+import { authApi } from '../../features/auth/api';
 import { App } from './App';
 
 describe('App', () => {
@@ -18,6 +19,14 @@ describe('App', () => {
 				</Provider>
 			</MemoryRouter>
 		);
+
+	beforeEach(() => {
+		store.dispatch(authApi.util.resetApiState());
+	});
+
+	afterEach(() => {
+		store.dispatch(authApi.util.resetApiState());
+	});
 
 	test('auto redirect from unknown page to kitty page', async () => {
 		renderApp('/123');

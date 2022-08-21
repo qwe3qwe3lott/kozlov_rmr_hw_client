@@ -5,6 +5,7 @@ import { Button } from '../../../../ui-library/components/Button';
 import { StyleColorPresets } from '../../../../ui-library/presets/StyleColorPresets';
 import { WithLayoutClass } from '../../../../ui-library/util/WithLayoutClass';
 import styles from './HeaderAuthBar.module.scss';
+import { authBarTestId } from './index';
 
 type Props = WithLayoutClass;
 
@@ -17,7 +18,7 @@ export const HeaderAuthBar: React.FC<Props> = ({ layoutClass = '' }) => {
 	};
 
 	return !isFetching && isSuccess ? (
-		<div className={cn(layoutClass, styles.layout)}>
+		<div data-testid={authBarTestId} className={cn(layoutClass, styles.layout)}>
 			<p>{data.name}</p>
 			<Button
 				styleColorPreset={StyleColorPresets.Secondary}
