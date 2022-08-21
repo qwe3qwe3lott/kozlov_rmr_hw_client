@@ -13,6 +13,13 @@ import {
 	phoneOptions
 } from './inputValidationOptions';
 import styles from './AuthForm.module.scss';
+import {
+	authFormTestId,
+	emailInputTestId,
+	passwordInputTestId,
+	phoneInputTestId,
+	submitButtonTestId
+} from './';
 
 export const AuthForm: React.FC = () => {
 	const {
@@ -50,30 +57,30 @@ export const AuthForm: React.FC = () => {
 		<form
 			className={styles.layout}
 			onSubmit={handleSubmit(submitHandler)}
-			data-testid={'auth-form'}
+			data-testid={authFormTestId}
 		>
 			<Input
 				label={'Email'}
 				inputMode={'email'}
 				errorMsg={errors.email?.message}
 				{...register('email', emailOptions)}
-				data-testid={'auth-form__email-input'}
+				data-testid={emailInputTestId}
 			/>
 			<Input
 				label={'Phone'}
 				inputMode={'tel'}
 				errorMsg={errors.phone?.message}
 				{...register('phone', phoneOptions)}
-				data-testid={'auth-form__phone-input'}
+				data-testid={phoneInputTestId}
 			/>
 			<Input
 				label={'Password'}
 				inputMode={'text'}
 				errorMsg={errors.password?.message}
 				{...register('password', passwordOptions)}
-				data-testid={'auth-form__password-input'}
+				data-testid={passwordInputTestId}
 			/>
-			<SubmitButton text={'Submit'} data-testid={'auth-form__submit-button'} />
+			<SubmitButton text={'Submit'} data-testid={submitButtonTestId} />
 			{errorMessages &&
 				errorMessages.map((errorMessage, index) => (
 					<p key={index} className={styles.error}>

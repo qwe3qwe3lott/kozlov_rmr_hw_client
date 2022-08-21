@@ -1,3 +1,5 @@
+@import "./colors";
+
 p {
 	margin: 0;
 }
@@ -16,6 +18,7 @@ body,
 }
 
 #root {
+	color: $default-text-color;
 	display: grid;
 	grid-template-rows: min-content 1fr min-content;
 	font-size: 25px;

@@ -1,11 +1,9 @@
-@import "../../colors";
+@import "../../mixins";
 
-.layout {
-	padding: 0.2em;
-	border: none;
-	border-radius: 0.25em;
-	background-color: $primary-color;
-	color: $primary-text-color;
-	text-align: center;
-	cursor: pointer;
+.primaryLayout {
+	@include primaryButton;
+}
+
+.secondaryLayout {
+	@include secondaryButton;
 }
