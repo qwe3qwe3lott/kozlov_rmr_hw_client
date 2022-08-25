@@ -1,1 +1,3 @@
 "export default" at folder "screens" used to implement "lazy loading"
+
+env-files are consciously stored into repository
