@@ -1,0 +1,45 @@
+name: prepare-for-deploy
+
+on:
+  push:
+    branches: [ "master" ]
+    
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+  
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        
+    - run: npm i
+    - run: npm run lint
+    
+  test:
+    runs-on: ubuntu-lastest
+    needs: lint
+    
+    steps:
+    - uses: actions/checkout@v3
+  
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        
+    - run: npm i
+    - run: npm run test
+    
+  image:
+    runs-on: ubuntu-lastest
+    needs: test
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - run: docker build -t client .
+    
