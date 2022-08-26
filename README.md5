@@ -4,4 +4,4 @@ env-files are consciously stored into repository
 
 Status after pushing in master:
 
-<img src="https://github.com/qwe3qwe3lott/kozlov_rmr_hw_client/workflows/prepare-for-deploy/badge.svg?branch=master">
+![CI](https://github.com/qwe3qwe3lott/kozlov_rmr_hw_client/workflows/prepare-for-deploy/badge.svg?branch=master)
